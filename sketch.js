@@ -29,7 +29,7 @@ function setup(){
     path=createSprite(width/2,200);
     path.addImage(pathImg);
     path.velocityY = 4;
-
+    console.log("BOONAH: width="+width+" windowWith="+windowWidth);
 
     //creating boy
     boy = createSprite(width/2,height-20,20,20);
@@ -37,16 +37,16 @@ function setup(){
     boy.scale=0.08;
   
     //game over
-    gameOver=createSprite(width/2,200);
+    gameOver=createSprite(width/2,220);
     gameOver.addImage(gameOverImg);
     gameOver.visible=false;
-
-
+    gameOver.scale=width/740;
+    
+    //Groups
     cashG=new Group();
     diamondsG=new Group();
     jewelryG=new Group();
     swordG=new Group();
-
 }
 
 function draw() {
@@ -59,7 +59,7 @@ function draw() {
       
       //code to reset the background
       if(path.y > height ){
-      path.y = height/2;
+        path.y = height/2;
       }
       
       createCash();
@@ -91,37 +91,37 @@ function draw() {
   
     drawSprites();
     textSize(20);
-    fill("yellow");
-    text("Treasure: "+ treasureCollection,width-250,30);
+    fill("blue");
+    text("Treasure: "+ treasureCollection,width/2-50,30);
   }
 
 }
 
 function createCash() {
     if (World.frameCount % 200 == 0) {
-    var cash = createSprite(Math.round(random(40, width-50),40, 10, 10));
-    cash.addImage(cashImg);
-    cash.scale=0.12;
-    cash.velocityY = 3;
-    cash.lifetime = 200;
-    cashG.add(cash);
+      var cash = createSprite(Math.round(random(40, width-40),40, 10, 10));
+      cash.addImage(cashImg);
+      cash.scale=0.12;
+      cash.velocityY = 3;
+      cash.lifetime = 200;
+      cashG.add(cash);
     }
   }
 
 function createDiamonds() {
   if (World.frameCount % 320 == 0) {
-    var diamonds = createSprite(Math.round(random(40, width-200),40,10, 10));
+    var diamonds = createSprite(Math.round(random(40, width-40),40,10, 10));
     diamonds.addImage(diamondsImg);
     diamonds.scale=0.03;
     diamonds.velocityY = 3;
     diamonds.lifetime = 200;
     diamondsG.add(diamonds);
-    }
+  }
 }
 
 function createjewelry() {
   if (World.frameCount % 410 == 0) {
-    var jewelry = createSprite(Math.round(random(40, width-50),40, 10, 10));
+    var jewelry = createSprite(Math.round(random(40, width-40),40, 10, 10));
     jewelry.addImage(jewelryImg);
     jewelry.scale=0.13;
     jewelry.velocityY = 3;
@@ -132,11 +132,11 @@ function createjewelry() {
 
 function createSword(){
   if (World.frameCount % 530 == 0) {
-    var sword = createSprite(Math.round(random(40, width-50),40, 10, 10));
-    sword.addImage(swordImg);
-    sword.scale=0.1;
-    sword.velocityY = 3;
-    sword.lifetime = 200;
-    swordG.add(sword);
+      var sword = createSprite(Math.round(random(40, width-40),40, 10, 10));
+      sword.addImage(swordImg);
+      sword.scale=0.1;
+      sword.velocityY = 3;
+      sword.lifetime = 200;
+      swordG.add(sword);
    }
 }
